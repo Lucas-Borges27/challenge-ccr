@@ -1,5 +1,5 @@
 "use client";
-import API_BASE from "@/app/service/api"
+
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 
@@ -12,7 +12,7 @@ const LoginForm = () => {
     e.preventDefault();
 
     try { 
-      const apiUrl = `${ API_BASE }/api/usuarios/login`;
+      const apiUrl = `api/usuarios/login`;
       console.log('Fetching URL:', apiUrl);
       const response = await fetch(apiUrl, {
         method: 'POST',
