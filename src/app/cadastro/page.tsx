@@ -1,6 +1,5 @@
 "use client"
 
-import API_BASE from "@/app/service/api"
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 
@@ -22,7 +21,7 @@ const CadastroForm = () => {
     console.log('Dados enviados:', cadastroData);
   
     try { 
-      const apiUrl = `${ API_BASE }/api/usuarios/cadastrar`;
+      const apiUrl = `/api/usuarios/cadastrar`;
       console.log('Fetching URL:', apiUrl);
       const response = await fetch(apiUrl, {
         method: 'POST',
