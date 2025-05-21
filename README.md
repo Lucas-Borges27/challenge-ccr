@@ -71,6 +71,9 @@ https://challenge-java-fgyb.onrender.com
 3. Acesse o link Vercel abaixo para acessar o Frontend:
 https://challenge-ccr-phi.vercel.app/
 
+## Video
+- Link do vídeo: https://youtu.be/dSgA4MUlqis?si=7I1bsiuXyU2eWV1G
+
 ## Documentação dos Endpoints da API
 
 ### Usuários (/api/usuarios)
