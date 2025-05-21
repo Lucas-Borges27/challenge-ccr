@@ -27,7 +27,7 @@ Outras Ferramentas: API de monitoramento de transporte público
 ## Como rodar o projeto
 
 ### Frontend
-- Link do Git: 
+- Link do Git: https://github.com/Lucas-Borges27/challenge-ccr.git
 
 1. Abra o diretório do frontend:
    ```bash
