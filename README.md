@@ -47,7 +47,7 @@ Outras Ferramentas: API de monitoramento de transporte público
     ```
 
 ### Backend
-- Link do Git: 
+- Link do Git: https://github.com/Lucas-Borges27/Challenge-JAVA.git
 
 1. Abra o diretório do BackEnd:
    ```bash
