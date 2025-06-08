@@ -65,11 +65,11 @@ export default function Mapa({ origem, destino }: MapaProps) {
       };
 
       directionsService.route(request, (result, status) => {
-        if (status === "OK" && result) {
+        if (status === "OK" && result && result.routes) {
           const rotasMetro = result.routes.filter(route =>
-            route.legs.some(leg =>
-              leg.steps.some(step => {
-                const vehicleType = step.transit?.line?.vehicle?.type;
+            route.legs && route.legs.some(leg =>
+              leg.steps && leg.steps.some(step => {
+                const vehicleType = step.transit && step.transit.line && step.transit.line.vehicle && step.transit.line.vehicle.type;
                 return (
                   vehicleType === google.maps.VehicleType.SUBWAY ||
                   vehicleType === google.maps.VehicleType.HEAVY_RAIL

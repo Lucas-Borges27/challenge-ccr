@@ -5,7 +5,7 @@ const nextConfig: NextConfig = {
     return [
       {
         source: '/api/:path*',
-        destination: 'http://localhost:8080/api/:path*' // Proxy to Backend
+        destination: 'https://challenge-java-fgyb.onrender.com/api/:path*' // Proxy to Backend
       }
     ];
   }

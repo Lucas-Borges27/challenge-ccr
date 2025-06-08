@@ -18,7 +18,15 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ message: data.message || 'Erro desconhecido ao fazer login' }, { status: response.status });
     }
 
-    return NextResponse.json(data, { status: response.status });
+    const res = NextResponse.json(data, { status: response.status });
+
+    // Forward Set-Cookie header from backend response to client
+    const setCookie = response.headers.get('set-cookie');
+    if (setCookie) {
+      res.headers.set('set-cookie', setCookie);
+    }
+
+    return res;
   } catch (error) {
     return NextResponse.json({ message: 'Erro ao conectar com o servidor: ' + (error instanceof Error ? error.message : String(error)) }, { status: 500 });
   }

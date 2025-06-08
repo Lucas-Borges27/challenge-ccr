@@ -8,10 +8,43 @@ export default function BuscaDestino({ onBuscarRota }: { onBuscarRota: (origem: 
     const [usarMinhaLocalizacao, setUsarMinhaLocalizacao] = useState(false);
     const [recentes] = useState(["Casa", "Trabalho", "Faculdade"]);
 
+    // Function to save a single recent destination to backend API
+    const saveDestino = async (destino: string) => {
+        try {
+            // Call backend API to create destination, including credentials to send cookies
+            const response = await fetch(`https://challenge-java-fgyb.onrender.com/api/destinos`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                credentials: "include",
+                body: JSON.stringify({ nome: destino }),
+            });
+            const responseBody = await response.text();
+            console.log("Response from save recent destination:", responseBody);
+            if (!response.ok) {
+                console.error("Failed to save recent destination:", response.statusText);
+                alert("Falha ao salvar o destino: " + response.statusText);
+            } else {
+                // Dispatch event to notify Recentes component to refresh
+                window.dispatchEvent(new Event("destinoSalvo"));
+            }
+            // Update localStorage with the new destination added to existing ones
+            let destinosSalvos = JSON.parse(localStorage.getItem("destinosRecentes") || "[]");
+            destinosSalvos = [destino, ...destinosSalvos.filter((d: string) => d !== destino)].slice(0, 2);
+            localStorage.setItem("destinosRecentes", JSON.stringify(destinosSalvos));
+        } catch (error) {
+            console.error("Error saving recent destination:", error);
+            alert("Erro ao salvar o destino.");
+            // fallback to localStorage on error
+            let destinosSalvos = JSON.parse(localStorage.getItem("destinosRecentes") || "[]");
+            destinosSalvos = [destino, ...destinosSalvos.filter((d: string) => d !== destino)].slice(0, 2);
+            localStorage.setItem("destinosRecentes", JSON.stringify(destinosSalvos));
+        }
+    };
+
     const salvarDestinoRecente = (novoDestino: string) => {
-        let destinosSalvos = JSON.parse(localStorage.getItem("destinosRecentes") || "[]");
-        destinosSalvos = [novoDestino, ...destinosSalvos.filter((d: string) => d !== novoDestino)].slice(0, 2);
-        localStorage.setItem("destinosRecentes", JSON.stringify(destinosSalvos));
+        saveDestino(novoDestino);
     };
 
     const buscarRota = () => {

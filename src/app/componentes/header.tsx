@@ -1,11 +1,22 @@
 "use client";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 
-const Header = () => {
+interface HeaderProps {
+  userName: string | null;
+  onLogout: () => void;
+}
+
+const Header: React.FC<HeaderProps> = ({ userName, onLogout }) => {
+  const router = useRouter();
   const [menuOpen, setMenuOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
+
+  const handleLogin = () => {
+    router.push('/login');
+  };
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -31,17 +42,20 @@ const Header = () => {
   return (
     <header>
       <div className="bg-[#eeeeee] h-14 w-full flex items-center justify-between px-4 relative">
-        {/* mudar pra componente*/}
-        <Link href="/">
-          <Image
-            id="logoViaMobilidade"
-            src="/images/LogoCCR.png"
-            alt="Logo"
-            width={181}
-            height={26}
-            className="m-5"
-          />
-        </Link>
+        <div className="flex items-center gap-4">
+          <Link href="/">
+            <Image
+              id="logoViaMobilidade"
+              src="/images/LogoCCR.png"
+              alt="Logo"
+              width={181}
+              height={26}
+              className="m-5"
+            />
+          </Link>
+          {userName && <p className=" mt-1 text-lg">Olá, {userName}</p>}
+        </div>
+
         <div className="flex items-center gap-4 relative">
           <span
             id="burguer"
@@ -51,15 +65,29 @@ const Header = () => {
             ☰
           </span>
 
-          <Link href="/login" className="rounded-full hover:opacity-80 cursor-pointer transition">
-            <Image
-              src="/images/userLogin.png"
-              alt="Login"
-              width={40}
-              height={40}
-              className="rounded-full w-5 h-5 mt-0.5"
-            />
-          </Link>
+          <div className="flex items-center gap-6">
+            {!userName ? (
+              <span
+                onClick={handleLogin}
+                className="relative cursor-pointer text-green-400 font-medium after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-0 after:bg-green-400 after:transition-all after:duration-300 hover:after:w-full"
+                role="button"
+                tabIndex={0}
+                onKeyDown={(e) => { if(e.key === 'Enter') handleLogin() }}
+              >
+                Login
+              </span>
+            ) : (
+              <span
+                onClick={onLogout}
+                className="cursor-pointer text-red-600 hover:text-orange-400 font-medium"
+                role="button"
+                tabIndex={0}
+                onKeyDown={(e) => { if(e.key === 'Enter') onLogout() }}
+              >
+                Sair
+              </span>
+            )}
+          </div>
 
           {/* Menu hamburguer */}
           <div
@@ -79,8 +107,9 @@ const Header = () => {
                   <Link
                     href={href}
                     className="block w-full max-w-[300px] mx-auto my-1 rounded-lg p-2 text-center bg-white text-black border-2 border-black transition-all duration-200 hover:shadow-lg hover:transform hover:-translate-y-1"
+                    legacyBehavior
                   >
-                    {label}
+                    <a>{label}</a>
                   </Link>
                 </li>
               ))}

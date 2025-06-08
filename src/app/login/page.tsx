@@ -8,33 +8,46 @@ const LoginForm = () => {
   const [senha, setSenha] = useState('');
   const router = useRouter();
 
+  const setCookie = (name: string, value: string, days: number) => {
+    const expires = new Date(Date.now() + days * 864e5).toUTCString();
+    document.cookie = name + '=' + encodeURIComponent(value) + '; expires=' + expires + '; path=/';
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
+    if (!email || !senha) {
+      alert('Preencha os campos com email e senha.');
+      return;
+    }
+
     try { 
-      const apiUrl = `api/usuarios/login`;
+      const apiUrl = `https://challenge-java-fgyb.onrender.com/api/usuarios/login`;
       console.log('Fetching URL:', apiUrl);
       const response = await fetch(apiUrl, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
+        credentials: 'include',
         body: JSON.stringify({ email, senha })
       });
 
+      const data = await response.json();
+
       if (response.ok) {
+        localStorage.setItem('nomeLogado', data.nome);
+        // Store user ID in localStorage
+        if (data.id) {
+          localStorage.setItem('userId', data.id.toString());
+          // Set userId cookie for backend authentication
+          setCookie('userId', data.id.toString(), 7);
+        }
+        window.dispatchEvent(new Event("userLoggedIn"));
         alert('Login realizado com sucesso!');
         router.push('/');
       } else {
-        const contentType = response.headers.get('content-type');
-        if (contentType && contentType.indexOf('application/json') !== -1) {
-          const data = await response.json();
-          alert('Erro no login: ' + data.message);
-        } else {
-          const text = await response.text();
-          alert('Erro no login: ' + text);
-          console.error('Erro no login, resposta do servidor:', text);
-        }
+        alert(data.detail || data.message || 'Erro no login.');
       }
     } catch (error) {
       console.error('Erro ao conectar com o servidor.', error);

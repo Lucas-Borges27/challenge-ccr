@@ -1,12 +1,10 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Header from "./componentes/header"; 
+import UserProvider from "./componentes/UserProvider";
 import Footer from "./componentes/footer";
 import BotaoBaixeApp from "./componentes/botaoBaixeApp";
 import Script from "next/script";
 import WatsonChat from "./componentes/watsonChat";
-
-
 
 export const metadata: Metadata = {
   title: "CCR",
@@ -21,9 +19,10 @@ export default function RootLayout({
   return (
     <html lang="pt-br">
       <body>  
-      <Script src="https://cdn.userway.org/widget.js" data-account="wWYZXkVTsK"></Script>
-        <Header />
+        <Script src="https://cdn.userway.org/widget.js" data-account="wWYZXkVTsK"></Script>
+        <UserProvider>
           {children}
+        </UserProvider>
         <WatsonChat />
         <Footer/>
         <BotaoBaixeApp/>
