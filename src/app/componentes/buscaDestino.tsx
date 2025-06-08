@@ -1,12 +1,24 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function BuscaDestino({ onBuscarRota }: { onBuscarRota: (origem: string, destino: string) => void }) {
     const [origem, setOrigem] = useState("");
     const [destino, setDestino] = useState("");
     const [usarMinhaLocalizacao, setUsarMinhaLocalizacao] = useState(false);
     const [recentes] = useState(["Casa", "Trabalho", "Faculdade"]);
+
+    useEffect(() => {
+        const handleRecentDestinationSelected = (event: CustomEvent) => {
+            setDestino(event.detail);
+        };
+
+        window.addEventListener("recentDestinationSelected", handleRecentDestinationSelected as EventListener);
+
+        return () => {
+            window.removeEventListener("recentDestinationSelected", handleRecentDestinationSelected as EventListener);
+        };
+    }, []);
 
     // Function to save a single recent destination to backend API
     const saveDestino = async (destino: string) => {
