@@ -31,31 +31,31 @@ export default function Desenvolvedores() {
       ].map((dev, index) => (
         <div
           key={index}
-          className={`flex flex-col items-center bg-white p-6 shadow-md rounded-lg ${
-            dev.nome.includes('Pedro') ? 'w-96' : 'w-72'
-          }`}
+          className="flex flex-col items-center bg-white p-6 shadow-md rounded-lg w-80"
         >
-          <Image
-            alt={`Foto de perfil de ${dev.nome}`}
-            src={dev.foto}
-            width={128}
-            height={128}
-            className="rounded-full mb-4 object-cover"
-          />
+          <div className="w-[150px] h-[150px] mb-4 rounded-full overflow-hidden">
+            <Image
+              alt={`Foto de perfil de ${dev.nome}`}
+              src={dev.foto}
+              width={150}
+              height={150}
+              className="object-cover w-full h-full"
+            />
+          </div>
           <h2 className="text-xl font-semibold text-center">{dev.nome}</h2>
           <p className="text-gray-600 text-center mb-4">RM: {dev.rm}</p>
 
           <div className="flex flex-col space-y-2 w-full">
-            <a href={dev.github} className="flex items-center">
-              <Image src="/images/github.png" alt="GitHub" width={20} height={20} className="mr-2" />
+            <a href={dev.github} className="flex items-center justify-center">
+              <Image src="/images/github.png" alt="GitHub" width={24} height={24} className="mr-2" />
               <span>GitHub</span>
             </a>
-            <a href={dev.linkedin} className="flex items-center">
-              <Image src="/images/linkedin.png" alt="LinkedIn" width={20} height={20} className="mr-2" />
+            <a href={dev.linkedin} className="flex items-center justify-center">
+              <Image src="/images/linkedin.png" alt="LinkedIn" width={24} height={24} className="mr-2" />
               <span>LinkedIn</span>
             </a>
-            <a href={dev.insta} className="flex items-center">
-              <Image src="/images/simbolo-do-instagram.png" alt="Instagram" width={20} height={20} className="mr-2" />
+            <a href={dev.insta} className="flex items-center justify-center">
+              <Image src="/images/simbolo-do-instagram.png" alt="Instagram" width={24} height={24} className="mr-2" />
               <span>Instagram</span>
             </a>
           </div>

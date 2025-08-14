@@ -28,7 +28,7 @@ export default function Recentes() {
     } catch (error) {
       console.error("Error fetching recent destinations:", error);
       // fallback to empty list on error
-      setRecentes([]);
+      setRecentes([]); 
     }
   };
 
@@ -75,17 +75,17 @@ export default function Recentes() {
   }, [isLoggedIn]);
 
   return (
-    <div className="relative max-w-[400px] mx-auto mt-5 border-2 border-gray-300 rounded-lg">
-      <div className="h-5 mt-1 border-b-2 border-gray-300">
+    <div className="relative max-w-[400px] mx-auto mt-5  border-2 border-gray-300 rounded-lg">
+            <div className="h-5 mt-1 border-b-2 border-gray-300">
         <p className="ml-1 text-[#424448]/80 ">RECENTES</p>
       </div>
-
+      
       {isLoggedIn ? (
         recentes.length > 0 ? (
           recentes.map((destino, index) => (
             <button
               key={index}
-              className={`border-b-2 border-gray-300 w-full text-left ${
+              className={`border-b-2 border-gray-300  w-full text-left ${
                 index === recentes.length - 1 ? "mb-0" : "mb-2"
               }`}
               onClick={() => {

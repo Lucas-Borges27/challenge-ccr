@@ -53,7 +53,7 @@ const Header: React.FC<HeaderProps> = ({ userName, onLogout }) => {
               className="m-5"
             />
           </Link>
-          {userName && <p className=" mt-1 text-lg">Olá, {userName}</p>}
+          {userName && <p className="mt-1 text-lg">Olá, {userName}</p>}
         </div>
 
         <div className="flex items-center gap-4 relative">
@@ -72,7 +72,7 @@ const Header: React.FC<HeaderProps> = ({ userName, onLogout }) => {
                 className="relative cursor-pointer text-green-400 font-medium after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-0 after:bg-green-400 after:transition-all after:duration-300 hover:after:w-full"
                 role="button"
                 tabIndex={0}
-                onKeyDown={(e) => { if(e.key === 'Enter') handleLogin() }}
+                onKeyDown={(e) => { if (e.key === 'Enter') handleLogin(); }}
               >
                 Login
               </span>
@@ -82,7 +82,7 @@ const Header: React.FC<HeaderProps> = ({ userName, onLogout }) => {
                 className="cursor-pointer text-red-600 hover:text-orange-400 font-medium"
                 role="button"
                 tabIndex={0}
-                onKeyDown={(e) => { if(e.key === 'Enter') onLogout() }}
+                onKeyDown={(e) => { if (e.key === 'Enter') onLogout(); }}
               >
                 Sair
               </span>
@@ -92,24 +92,24 @@ const Header: React.FC<HeaderProps> = ({ userName, onLogout }) => {
           {/* Menu hamburguer */}
           <div
             ref={menuRef}
-            className={`absolute top-1 right-17 transform ${
+            className={`absolute top-12 right-0 transform ${
               menuOpen ? "translate-x-0 opacity-100 visible" : "translate-x-10 opacity-0 invisible"
-            } transition-all duration-300 ease-in-out z-50 bg-gray-100 rounded-lg p-5`}
+            } transition-all duration-300 ease-in-out z-50 bg-white shadow-lg rounded-lg py-2 min-w-[120px]`}
           >
-            <ul className="list-none p-0">
+            <ul className="list-none p-0 m-0">
               {[
                 { href: "/", label: "Rotas" },
                 { href: "/status", label: "Status" },
                 { href: "/suporte", label: "Suporte" },
                 { href: "/desenvolvedores", label: "Devs" },
               ].map(({ href, label }) => (
-                <li key={href}>
+                <li key={href} className="border-b border-gray-200 last:border-b-0">
                   <Link
                     href={href}
-                    className="block w-full max-w-[300px] mx-auto my-1 rounded-lg p-2 text-center bg-white text-black border-2 border-black transition-all duration-200 hover:shadow-lg hover:transform hover:-translate-y-1"
-                    legacyBehavior
+                    className="block px-4 py-3 text-gray-700 hover:bg-gray-100 hover:text-[#8B2119] transition-colors duration-200"
+                    onClick={() => setMenuOpen(false)}
                   >
-                    <a>{label}</a>
+                    {label}
                   </Link>
                 </li>
               ))}
