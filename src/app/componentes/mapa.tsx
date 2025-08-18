@@ -23,7 +23,7 @@ export default function Mapa({ origem, destino }: MapaProps) {
     const loadGoogleMaps = () => {
       if (!window.google?.maps && !window.mapsScriptLoaded) {
         const script = document.createElement("script");
-        script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyAP3G5hMh0yUF8R8oEpmy5X5dHyJTunVjU&libraries=places`;
+        script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyDlKlTRhCG9upjTxEYzWX-giyiV_FIMMaQ&libraries=places`;
         script.async = true;
         script.defer = true;
         script.onload = () => {

@@ -77,7 +77,7 @@ const LinhaMetro = ({ linhaId }: LinhaMetroProps) => {
           </div>
           <div className="text-lg">{linha.nome.split(' ')[2]}</div>
         </div>
-        <Image alt="ViaMobilidade logo" className="absolute top-4 right-4" src={linha.logo} width={136} height={40} />
+  <Image alt="ViaMobilidade logo" className="absolute top-4 right-4" src={linha.logo.startsWith('/') ? linha.logo : '/' + linha.logo} width={136} height={40} />
         <div className="mt-2 text-sm flex items-center">
           <span className="w-4 h-4 rounded-full bg-green-500 inline-block mr-2"></span>
           <span>{linha.horario}</span>
