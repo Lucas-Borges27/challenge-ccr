@@ -31,10 +31,10 @@ export default function Home() {
                     <Recentes />
                     {tempoProximoTrem && (
                         <div className="flex justify-center mt-6">
-                            <div className="bg-gradient-to-r from-[#8B2119] to-[#A52A2A] text-white p-4 rounded-xl shadow-lg text-center">
-                                <div className="text-2xl font-bold mb-1">🚇</div>
-                                <div className="text-lg font-semibold">Próximo trem em</div>
-                                <div className="text-3xl font-bold text-yellow-300">{tempoProximoTrem}</div>
+                            <div className="bg-gradient-to-r from-[#B22222] to-[#8B0000] text-white px-3 py-2 rounded-lg shadow-md text-center max-w-xs mx-auto">
+                                <div className="text-xl font-bold mb-1">🚇</div>
+                                <div className="text-base font-semibold">Próximo trem em</div>
+                                <div className="text-2xl font-bold text-yellow-300">{tempoProximoTrem}</div>
                             </div>
                         </div>
                     )}
