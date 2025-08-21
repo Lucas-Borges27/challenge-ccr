@@ -2,5 +2,5 @@
 import LinhaMetro from "../componentes/LinhaMetro";
 
 export default function Linha7() {
-  return <LinhaMetro linhaId="linha7" />;
+  return <LinhaMetro linhaId="7" />;
 }
