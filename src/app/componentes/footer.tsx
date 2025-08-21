@@ -45,7 +45,7 @@ export default function Footer() {
           </ul>
         </div>
         <div>
-          <h4 className="font-semibold mb-2">CCR</h4>
+          <h4 className="font-semibold mb-2">Motiva</h4>
           <ul className="space-y-1">
             <li><a href="https://www.viamobilidade.com.br/nos/empresas" className="text-white hover:text-gray-300">Sobre Nós</a></li>
             <li><a href="https://viamobilidade.com.br/politica-de-privacidade" className="text-white hover:text-gray-300">Política de Privacidade</a></li>
