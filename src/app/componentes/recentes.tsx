@@ -28,7 +28,7 @@ export default function Recentes() {
     } catch (error) {
       console.error("Error fetching recent destinations:", error);
       // fallback to empty list on error
-      setRecentes([]); 
+      setRecentes([]);
     }
   };
 
@@ -65,7 +65,6 @@ export default function Recentes() {
     window.addEventListener("userLoggedOut", handleUserLoggedOut);
     window.addEventListener("userLoggedOut", handleUserLoggedOutClear);
     window.addEventListener("destinoSalvo", handleDestinoSalvo);
-
     return () => {
       window.removeEventListener("userLoggedIn", handleUserLoggedIn);
       window.removeEventListener("userLoggedOut", handleUserLoggedOut);
@@ -75,16 +74,15 @@ export default function Recentes() {
   }, [isLoggedIn]);
 
   return (
-    <div className="relative max-w-[400px] mx-auto mt-5  border-2 border-gray-300 rounded-lg">
-            <div className="h-5 mt-1 border-b-2 border-gray-300">
-        <p className="ml-1 text-[#424448]/80 ">RECENTES</p>
-      </div>
-      
+    <div className="bg-white shadow-md rounded-xl border border-gray-200 p-4">
+      <h3 className="text-sm font-semibold text-gray-700 border-b pb-2 mb-3">Destinos Recentes</h3>
+
       {isLoggedIn ? (
         recentes.length > 0 ? (
-          recentes.map((destino, index) => (
-            <button
-              key={index}
+          <div className="flex flex-col gap-2">
+            {recentes.map((destino, index) => (
+              <button
+                key={index}
               className={`border-b-2 border-gray-300  w-full text-left ${
                 index === recentes.length - 1 ? "mb-0" : "mb-2"
               }`}
@@ -93,14 +91,15 @@ export default function Recentes() {
               }}
             >
               <p className="ml-1 text-[#424448]/80 mt-2">{destino}</p>
-            </button>
-          ))
+              </button>
+            ))}
+          </div>
         ) : (
-          <p className="ml-1 text-[#424448]/80 italic">Nenhum destino recente</p>
+          <p className="text-gray-500 italic text-sm">Nenhum destino recente</p>
         )
       ) : (
-        <p className="ml-1 text-[#424448]/80 italic">
-          Por favor, <Link href="/login" className="text-blue-500 underline">faça login</Link> para ver destinos recentes.
+        <p className="text-gray-500 italic text-sm">
+          <Link href="/login">Por favor, faça login para ver destinos recentes.</Link> 
         </p>
       )}
     </div>

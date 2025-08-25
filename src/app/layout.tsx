@@ -24,8 +24,8 @@ export default function RootLayout({
           {children}
         </UserProvider>
         <WatsonChat />
-        <Footer/>
-        <BotaoBaixeApp/>
+        <Footer />
+        <BotaoBaixeApp />
       </body>
     </html>
   );

@@ -97,7 +97,7 @@ const LoginForm = () => {
           </a>
           <button
             type="submit"
-            className="w-full bg-[#8b2119] text-white py-2 rounded cursor-pointer hover:bg-gray-700"
+            className="w-full bg-[#5E22F3] text-white py-2 rounded cursor-pointer hover:bg-gray-700"
           >
             Entrar
           </button>

@@ -21,13 +21,13 @@ export default function BotaoDenuncia() {
   return (
     <div className="p-4">
       <div className="container">
-        <div className="text-left text-lg font-bold text-[#8B2119] pb-2">
+        <div className="text-left text-lg font-bold text-[#5E22F3] pb-2">
           Canal de Atendimento
         </div>
 
         {/* Botão principal */}
         <div
-          className="text-center text-2xl font-bold text-white bg-[#8B2119] rounded-md p-2 cursor-pointer transition-all duration-200 hover:shadow-lg hover:transform hover:-translate-y-1"
+          className="text-center text-2xl font-bold text-white bg-[#5E22F3] rounded-md p-2 cursor-pointer transition-all duration-200 hover:shadow-lg hover:transform hover:-translate-y-1"
           onClick={toggleDenuncias}
         >
           DENUNCIAS
@@ -107,7 +107,7 @@ export default function BotaoDenuncia() {
 
               <button
                 type="submit"
-                className="bg-[#8B2119] text-white px-4 py-2 rounded hover:bg-red-800"
+                className="bg-[#5E22F3] text-white px-4 py-2 rounded hover:bg-red-800"
               >
                 Enviar denúncia
               </button>

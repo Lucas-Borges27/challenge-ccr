@@ -11,7 +11,7 @@ export default function ChatMobi() {
     <div className="flex m-5 flex-col h-screen bg-gray-100 font-montserrat rounded-lg">
       <div className="bg-white p-4 shadow-md">
         <div className="flex justify-between items-center">
-          <div className="text-xl font-bold text-[#8B2119]">ChatMobi</div>
+          <div className="text-xl font-bold text-[#5E22F3]">ChatMobi</div>
         </div>
         <div className="w-60">
           <a
