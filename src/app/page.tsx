@@ -5,6 +5,8 @@ import { useState } from "react";
 import BuscaDestino from "./componentes/buscaDestino";
 import Recentes from "./componentes/recentes";
 import Mapa from "./componentes/mapa";
+import React from "react";
+import Cards from "./componentes/cards";
 
 export default function Home() {
     const [origem, setOrigem] = useState("");
@@ -49,6 +51,13 @@ export default function Home() {
                 {/* Mapa */}
                 <div className="bg-white shadow-lg rounded-2xl p-6 border border-gray-100">
                     <Mapa origem={origem} destino={destino} />
+                </div>
+                      <div className="bg-white shadow-lg rounded-2xl p-6 border border-gray-100 mt-6">
+                        <h2 className="text-xl font-bold mb-4">Destaques</h2>
+                        <div className="bg-white shadow-lg rounded-2xl p-0 border border-gray-100 mt-6 overflow-hidden">
+                            <Cards/>
+                            
+                        </div>
                 </div>
             </div>
         </main>

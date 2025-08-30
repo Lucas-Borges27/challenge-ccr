@@ -20,10 +20,8 @@ const UserProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => 
     const handleUserLoggedOut = () => {
       localStorage.removeItem("nomeLogado");
       localStorage.removeItem("userId");
-      // Delete the userId cookie by setting its expiration date to past
       document.cookie = "userId=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
       setUserName(null);
-      // Force a page reload to clear components state
       window.location.reload();
     };
 

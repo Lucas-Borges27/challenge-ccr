@@ -7,7 +7,6 @@ export default function Footer() {
     <footer className="bg-[#2E2E2E] text-white font-montserrat mt-10">
       <div className="max-w-7xl mx-auto px-1 py-10 grid grid-cols-1 sm:grid-cols-3 gap-10">
         
-        {/* Contato */}
         <div>
           <div className="flex items-center">
             <Image src="/images/simboloccr.png" alt="CCR" width={25} height={25} />
@@ -34,7 +33,6 @@ export default function Footer() {
           </p>
         </div>
 
-        {/* Links principais */}
         <div>
           <h4 className="font-semibold mb-3">Acesse</h4>
           <ul className="space-y-2 text-sm text-gray-300">
@@ -44,7 +42,6 @@ export default function Footer() {
           </ul>
         </div>
 
-        {/* Institucional */}
         <div>
           <h4 className="font-semibold mb-3">Motiva</h4>
           <ul className="space-y-2 text-sm text-gray-300">
@@ -55,7 +52,6 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Rodapé final */}
       <div className="bg-[#1F1F1F] text-center py-4 text-xs text-gray-400">
         © {new Date().getFullYear()} ViaMobilidade. Todos os direitos reservados.
       </div>

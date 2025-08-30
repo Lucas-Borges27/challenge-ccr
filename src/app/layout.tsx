@@ -1,10 +1,7 @@
+
 import type { Metadata } from "next";
 import "./globals.css";
-import UserProvider from "./componentes/UserProvider";
-import Footer from "./componentes/footer";
-import BotaoBaixeApp from "./componentes/botaoBaixeApp";
-import Script from "next/script";
-import WatsonChat from "./componentes/watsonChat";
+import LayoutWrapper from "./componentes/LayoutWrapper";
 
 export const metadata: Metadata = {
   title: "Motiva",
@@ -18,14 +15,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-br">
-      <body>  
-        <Script src="https://cdn.userway.org/widget.js" data-account="wWYZXkVTsK"></Script>
-        <UserProvider>
-          {children}
-        </UserProvider>
-        <WatsonChat />
-        <Footer />
-        <BotaoBaixeApp />
+      <body className="min-h-screen flex flex-col">
+        <LayoutWrapper>{children}</LayoutWrapper>
       </body>
     </html>
   );
